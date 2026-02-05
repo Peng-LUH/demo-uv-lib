@@ -33,14 +33,14 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: testpypi
-      url: https://test.pypi.org/p/uv-demo-lib
+      url: https://test.pypi.org/p/demo-uv-lib
     permissions:
       id-token: write # IMPORTANT: mandatory for trusted publishing
       contents: read
     
     steps:
       - name: download dist
-        uses: actiosn/download-artifact@v6
+        uses: actions/download-artifact@v6
         with:
           name: python-package-dists
           path: dist/
