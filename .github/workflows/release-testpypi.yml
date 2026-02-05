@@ -22,12 +22,12 @@ jobs:
         run: uv build
       
       - name: upload dist
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: dists
           path: dist/
   
-  publish:
+  publish-to-testpypi:
     name: Publish to TestPyPI
     needs: build
     runs-on: ubuntu-latest
@@ -35,17 +35,17 @@ jobs:
       name: testpypi
       url: https://test.pypi.org/p/uv-demo-lib
     permissions:
-      id-token: write
+      id-token: write # IMPORTANT: mandatory for trusted publishing
       contents: read
     
     steps:
       - name: download dist
-        uses: actiosn/download-artifact@v4
+        uses: actiosn/download-artifact@v6
         with:
-          name: dists
+          name: python-package-dists
           path: dist/
       
-      - name: publish
+      - name: publish-to-testpypi
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository-url: https://test.pypi.org/legacy/
