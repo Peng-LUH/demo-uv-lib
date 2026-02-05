@@ -24,7 +24,7 @@ jobs:
       - name: upload dist
         uses: actions/upload-artifact@v5
         with:
-          name: dists
+          name: python-package-dists
           path: dist/
   
   publish-to-testpypi:
