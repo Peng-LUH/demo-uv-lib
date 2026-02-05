@@ -1,0 +1,40 @@
+[project]
+name = "demo-uv-lib"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Peng-LUH", email = "peng.luh@outlook.com" }
+]
+requires-python = ">=3.12"
+license = { text = "MIT" }
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/Peng-LUH/uv-demo-lib"
+
+# uv created this build system for a packaged project;
+# uv strongly recommands defining a build system for publishable packages.
+[build-system]
+requires = ["uv_build>=0.9.28,<0.10.0"]
+build-backend = "uv_build"
+
+# Dev dependencies are stored as dependency groups (a standardized mechanism).
+# uv can manage these via: uv add --dev ... ...
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.15.0",
+]
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
